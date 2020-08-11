@@ -39,7 +39,7 @@ function EDRotatingMenu(options, canvas) {
 
     CornerRadius = options.CornerRadius;
     var DevideLineWidth = LineWidth / CornerRadius;
-    radius = options.Radus;
+    radius = options.Radius;
 
     OuterMenu = options.Menus.OuterMenu;
     OuterMenuLinks = options.Menus.OuterMenuLinks;
