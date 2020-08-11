@@ -14,7 +14,8 @@
             Rounding: true,         //ToggleRounding of Corners of Segments
             CornerRadius: 10,       //If Rounding - Should be no more than half of Line Width. //10 is best value
             LineWidth: 50,          // Width of Each segment            
-            Radus: 255,             //Outer Radius of the Outer Cirlce
+            Radus: 350,             //Outer Radius of the Outer Cirlce
+            GapBetweenSegments: 10,
             Menus: {            //Menu Titles and Links
                 OuterMenu: ["MENU OPT 1", "MENU OPT 2", "MENU OPT 3", "MENU OPT 4", "MENU OPT 5"],
                 OuterMenuLinks: ["../MENU1.ASPX", "../MENU2.ASPX", "../MENU3.ASPX", "../MENU4.ASPX", "../MENU5.ASPX"],
@@ -30,11 +31,13 @@
             ShadowBlur: 3,
             ShadowOffsetX: 3,
             ShadowOffsetY: 5,
+   
+
 
             //Colours
             OuterColours: ["#ffffff", "blue", "#031a9c"],
             MiddleColours: ["#ffffff", "#1ba157", "#066631"],
-            InnerColours: ["#ffffff", "#b04423", "#872709"],
+            InnerColours: ["#f2d8d0", "#b04423", "#872709"],
 
             Hovercolours: ["#ffffff", "#6f7305", "#e5ed09"],
 
@@ -50,23 +53,15 @@
             RotateTime: 2500,
 
         };
+        $(document).ready(function () {
 
-        window.addEventListener('DOMContentLoaded', (event) => {
-                var canvas = document.getElementById('myCanvas');
-                
-            
-            
+            var canvas = document.getElementById('myCanvas');
+
             $(canvas).css("border", "red 1px solid");
 
-          
+            var RotatingMenu = new EDRotatingMenu(options, canvas);
 
-
-
-                var RotatingMenu = new EDRotatingMenu(options, canvas);
-
-                
         });
-
 
 
     </script>
@@ -75,7 +70,7 @@
 
 
     <div>
-        <canvas id="myCanvas" height="600" width="600"></canvas>
+        <canvas id="myCanvas"  height="800" width="800"></canvas>
     </div>
 
 

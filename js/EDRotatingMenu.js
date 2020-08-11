@@ -13,11 +13,12 @@ var LineWidth, CornerRadius, radius, OuterMenu, OuterMenuLinks, MiddleMenu, Midd
     imageHeight,
     OuterFont,
     MiddleFont,
-    InnerFont;
+    InnerFont,
+    GapBetweenSegments;
 
 
- var stepIn1 = 1.3;
- var stepIn2 = 1.4;
+ 
+ 
 var elements = [];
 
 var BreakingSpeed = 0.075;
@@ -28,7 +29,7 @@ var BreakingSpeed = 0.075;
 
 
 function EDRotatingMenu(options, canvas) {
-
+    
     Redraw = false;
 
     var Animation = window.setInterval(RotateAnimation, Speed);
@@ -214,11 +215,11 @@ function EDRotatingMenu(options, canvas) {
     imageWidth = options.ImgWidth;
 
     OuterFont = options.OuterFont;
-        MiddleFont = options.MiddleFont;
-            InnerFont = options.InnerFont;
+    MiddleFont = options.MiddleFont;
+    InnerFont = options.InnerFont;
   
     
-
+    GapBetweenSegments = options.GapBetweenSegments;
     
      textRadiusOffset = (LineWidth / 2) * 1.25;
     
@@ -236,8 +237,8 @@ function EDRotatingMenu(options, canvas) {
 
      canvasOffset = $(canvas).offset();
      offsetX = canvasOffset.left;
-     offsetY = canvasOffset.top;
-    console.log(offsetX);
+    offsetY = canvasOffset.top;
+    
     Rounding = options.Rounding;
     
     if (Rounding) {
@@ -247,8 +248,8 @@ function EDRotatingMenu(options, canvas) {
         Gap = 2.5;
     }
 
-     stepIn1 = 1.3;
-     stepIn2 = 1.4;
+     //stepIn1 = 1.3;
+     //stepIn2 = 1.4;
 
     MenuX = $(canvas).width() / 2;
     MenuY = $(canvas).height() / 2;
@@ -259,7 +260,7 @@ function EDRotatingMenu(options, canvas) {
      InnerColours = options.InnerColours;
      Hovercolours = options.Hovercolours;
 
-
+    
      Speed = options.Speed;
      angleChange = options.angleChange;
      TimeToRotate = options.TimeToRotate;
@@ -287,7 +288,7 @@ function EDRotatingMenu(options, canvas) {
     }
 
     LetterRotation = LetterRotation - 0.05;
-    radius = radius / stepIn1
+    radius = radius - LineWidth - GapBetweenSegments;
     if (Rounding) {
         Gap = Gap + 2;
 
@@ -316,7 +317,7 @@ function EDRotatingMenu(options, canvas) {
         });
     }
 
-    radius = radius / stepIn2
+    radius = radius - LineWidth - GapBetweenSegments;
     if (Rounding) {
         Gap = Gap + 5;
         TextAngleRotationOffsetEnd = TextAngleRotationOffsetEnd + 0.1;
@@ -498,9 +499,9 @@ function DrawLogo(Img) {
 
 function AddColour(grd, coloursArray) {
     
-    grd.addColorStop(0.5, coloursArray[0]);
+    grd.addColorStop(0.3, coloursArray[0]);
     grd.addColorStop(0.8, coloursArray[1]);
-    grd.addColorStop(1, coloursArray[2]);
+    grd.addColorStop(1.0, coloursArray[2]);
     ctx.fillStyle = grd;
 }
 
