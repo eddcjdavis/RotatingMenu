@@ -11,11 +11,11 @@
     <script>
 
         var options = {
-            Rounding: true,         //ToggleRounding of Corners of Segments
-            CornerRadius: 10,       //If Rounding - Should be no more than half of Line Width. //10 is best value
+            Rounding: true,         //Toggle Rounding of Corners of Segments
+            CornerRadius: 10,       //If Rounding set corner radius - Should be no more than half of Line Width. //10 is best value
             LineWidth: 50,          // Width of Each segment            
-            Radus: 350,             //Outer Radius of the Outer Cirlce
-            GapBetweenSegments: 10,
+            Radus: 255,             //Outer Radius of the Outer Cirlce
+            GapBetweenSegments: 10,   //Gap Between Outer, Middle and inner circles
             Menus: {            //Menu Titles and Links
                 OuterMenu: ["MENU OPT 1", "MENU OPT 2", "MENU OPT 3", "MENU OPT 4", "MENU OPT 5"],
                 OuterMenuLinks: ["../MENU1.ASPX", "../MENU2.ASPX", "../MENU3.ASPX", "../MENU4.ASPX", "../MENU5.ASPX"],
@@ -24,11 +24,11 @@
                 InnerMenu: ["MENU 11", "MENU 12", "MENU 13", "MENU 14", "MENU 15"],
                 InnerMenuLinks: ["../MENU11.ASPX", "../MENU12.ASPX", "../MENU13.ASPX", "../MENU14.ASPX", "../MENU15.ASPX"],
             },
-            Img: "../Images/Logo.png", //Image Location,
-            ImgWidth: 160,
-            ImgHeight: 160,
+            Img: "../Images/Logo.png", //Image/Logo Location SRC,
+            ImgWidth: 140,  
+            ImgHeight: 140,
             ShadowColor: "rgba(0,0,0,0.5)",
-            ShadowBlur: 3,
+            ShadowBlur: 10,
             ShadowOffsetX: 3,
             ShadowOffsetY: 5,
    
@@ -45,12 +45,15 @@
 
             OuterFont : "bold 15pt calibri",
             MiddleFont : "15pt calibri",
-            InnerFont : "15pt calibri",
+            InnerFont: "15pt calibri",
+
+            StartTextOffset: 3, //offset start of text in segments by degrees (use negative numbers to move backwards)
+            EndTextOffset: 4,//offset end of text in segments by degrees (use negative numbers to move backwards)
 
             //Animation //TODO ADD EXPLINATION
-            Speed: 10,
-            angleChange: 0.02,
-            RotateTime: 2500,
+            Speed: 10,  //rotate every n milliseconds - higher numbers mean "jumpier" animation however may work better on slower systems
+            angleChange: 0.75, //In Degrees - how far it rotates every refresh - higher numbers means quicker rotation
+            RotateTime: 2500, //in miliseconds - set to 0 for no rotation
 
         };
         $(document).ready(function () {

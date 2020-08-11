@@ -1,7 +1,8 @@
 var LineWidth, CornerRadius, radius, OuterMenu, OuterMenuLinks, MiddleMenu, MiddleMenuLinks, InnerMenu, InnerMenuLinks, ImageSRC, textRadiusOffset, TextAngleRotationOffset, TextAngleRotationOffsetEnd, LetterRotation, ShadowColor, ShadowBlur, ShadowOffsetX, ShadowOffsetY, Rounding, OuterColours,
     MiddleColours,
     InnerColours,
-    Hovercolours, Speed,
+    Hovercolours,
+    Speed,
     angleChange,
     TimeToRotate,
     MenuX,
@@ -14,7 +15,9 @@ var LineWidth, CornerRadius, radius, OuterMenu, OuterMenuLinks, MiddleMenu, Midd
     OuterFont,
     MiddleFont,
     InnerFont,
-    GapBetweenSegments;
+    GapBetweenSegments,
+    StartTextOffset,
+    EndTextOffset;
 
 
  
@@ -29,21 +32,83 @@ var BreakingSpeed = 0.075;
 
 
 function EDRotatingMenu(options, canvas) {
-    
-    Redraw = false;
 
-    var Animation = window.setInterval(RotateAnimation, Speed);
+
+
+    LineWidth = options.LineWidth;
+
+    CornerRadius = options.CornerRadius;
+    var DevideLineWidth = LineWidth / CornerRadius;
+    radius = options.Radus;
+
+    OuterMenu = options.Menus.OuterMenu;
+    OuterMenuLinks = options.Menus.OuterMenuLinks;
+    MiddleMenu = options.Menus.MiddleMenu;
+    MiddleMenuLinks = options.Menus.MiddleMenuLinks;
+    InnerMenu = options.Menus.InnerMenu;
+    InnerMenuLinks = options.Menus.InnerMenuLinks;
+
+
+    imageSRC = options.Img;
+
+    imageHeight = options.ImgHeight;
+    imageWidth = options.ImgWidth;
+
+    OuterFont = options.OuterFont;
+    MiddleFont = options.MiddleFont;
+    InnerFont = options.InnerFont;
+    StartTextOffset = options.StartTextOffset;
+    EndTextOffset = options.EndTextOffset;
+
+    GapBetweenSegments = options.GapBetweenSegments;
+
+    textRadiusOffset = (LineWidth / 2) * 1.25;
+
+    TextAngleRotationOffset = 0.15;
+
+    TextAngleRotationOffsetEnd = 0.01
+    LetterRotation = 1.5;
+
+    ShadowColor = options.ShadowColor;
+    ShadowBlur = options.ShadowBlur;
+    ShadowOffsetX = options.ShadowOffsetX;
+    ShadowOffsetY = options.ShadowOffsetY;
+
+    ctx = setupCanvas(canvas);
+
+    canvasOffset = $(canvas).offset();
+    offsetX = canvasOffset.left;
+    offsetY = canvasOffset.top;
+
+    Rounding = options.Rounding;
+
+    MenuX = $(canvas).width() / 2;
+    MenuY = $(canvas).height() / 2; 
+    
+    OuterColours = options.OuterColours;
+    MiddleColours = options.MiddleColours;
+    InnerColours = options.InnerColours;
+    Hovercolours = options.Hovercolours;
+
+    Speed = options.Speed;
+
     var TimeToRotate = options.RotateTime;
 
+   
+
+    angleChange = (options.angleChange) /180*Math.PI ;
+    TimeToRotate = options.RotateTime;
+
+    console.log(TimeToRotate);
+
+    var Animation = window.setInterval(RotateAnimation, Speed);
 
     setTimeout(function () {
         clearInterval(Animation);
     }, TimeToRotate)
 
-
-
     function RotateAnimation() {
-        Redraw = true;
+        console.log("here");
         ClearCanvas();
         for (var i = 0; i < elements.length; i++) {
 
@@ -61,6 +126,12 @@ function EDRotatingMenu(options, canvas) {
         }
         DrawLogo(Img);
     };
+
+ 
+
+
+
+    
 
 
     $(canvas).mousemove(function (e) {      
@@ -195,51 +266,7 @@ function EDRotatingMenu(options, canvas) {
     }
 
    
-    LineWidth = options.LineWidth;
-    
-    CornerRadius = options.CornerRadius;  
-    var DevideLineWidth = LineWidth / CornerRadius;
-     radius= options.Radus;
-       
-     OuterMenu = options.Menus.OuterMenu;
-     OuterMenuLinks = options.Menus.OuterMenuLinks;
-     MiddleMenu = options.Menus.MiddleMenu;
-     MiddleMenuLinks = options.Menus.MiddleMenuLinks;
-     InnerMenu = options.Menus.InnerMenu;
-     InnerMenuLinks = options.Menus.InnerMenuLinks;
-
-
-    imageSRC = options.Img;   
-
-    imageHeight = options.ImgHeight;
-    imageWidth = options.ImgWidth;
-
-    OuterFont = options.OuterFont;
-    MiddleFont = options.MiddleFont;
-    InnerFont = options.InnerFont;
   
-    
-    GapBetweenSegments = options.GapBetweenSegments;
-    
-     textRadiusOffset = (LineWidth / 2) * 1.25;
-    
-     TextAngleRotationOffset = 0.15;
-    
-     TextAngleRotationOffsetEnd = 0.01
-     LetterRotation = 1.5;
-    
-     ShadowColor = options.ShadowColor;
-     ShadowBlur = options.ShadowBlur;
-     ShadowOffsetX = options.ShadowOffsetX;
-     ShadowOffsetY = options.ShadowOffsetY;
-
-     ctx = setupCanvas(canvas);
-
-     canvasOffset = $(canvas).offset();
-     offsetX = canvasOffset.left;
-    offsetY = canvasOffset.top;
-    
-    Rounding = options.Rounding;
     
     if (Rounding) {
         Gap = CornerRadius / (1 + 1 / 3);
@@ -248,23 +275,7 @@ function EDRotatingMenu(options, canvas) {
         Gap = 2.5;
     }
 
-     //stepIn1 = 1.3;
-     //stepIn2 = 1.4;
-
-    MenuX = $(canvas).width() / 2;
-    MenuY = $(canvas).height() / 2;
-
-
-     OuterColours = options.OuterColours;
-     MiddleColours = options.MiddleColours;
-     InnerColours = options.InnerColours;
-     Hovercolours = options.Hovercolours;
-
-    
-     Speed = options.Speed;
-     angleChange = options.angleChange;
-     TimeToRotate = options.TimeToRotate;
-
+   
 
 
   
@@ -292,8 +303,8 @@ function EDRotatingMenu(options, canvas) {
     if (Rounding) {
         Gap = Gap + 2;
 
-        TextAngleRotationOffset = TextAngleRotationOffset + 0.02;
-        TextAngleRotationOffsetEnd = TextAngleRotationOffsetEnd + 0.02;
+        TextAngleRotationOffset = TextAngleRotationOffset + ((StartTextOffset) / 180 * Math.PI);
+        TextAngleRotationOffsetEnd = TextAngleRotationOffsetEnd + ((EndTextOffset) / 180 * Math.PI);
     }
     else {
         TextAngleRotationOffset = TextAngleRotationOffset + 0.08;
@@ -318,10 +329,11 @@ function EDRotatingMenu(options, canvas) {
     }
 
     radius = radius - LineWidth - GapBetweenSegments;
+    
     if (Rounding) {
         Gap = Gap + 5;
-        TextAngleRotationOffsetEnd = TextAngleRotationOffsetEnd + 0.1;
-        TextAngleRotationOffset = TextAngleRotationOffset + 0.1;
+        TextAngleRotationOffsetEnd = TextAngleRotationOffsetEnd + ((EndTextOffset)/180*Math.PI);
+        TextAngleRotationOffset = TextAngleRotationOffset + ((StartTextOffset) / 180 * Math.PI) ;
     }
     else {
         TextAngleRotationOffset = TextAngleRotationOffset + 0.2;
@@ -368,8 +380,8 @@ function EDRotatingMenu(options, canvas) {
 
     function Draw(arc) {
         ctx.shadowColor = 'rgba(0,0,0,0.5)';
-        ctx.shadowOffsetX = 3;
-        ctx.shadowOffsetY = 5;
+        ctx.shadowOffsetX = ShadowOffsetX;
+        ctx.shadowOffsetY = ShadowOffsetY;
         DrawArc(arc);
         DrawLetters(arc);
 
@@ -377,14 +389,6 @@ function EDRotatingMenu(options, canvas) {
 
     function DrawArc(arc) {
 
-
-        //ctx.shadowColor = arc.shadowColor;
-
-       // ctx.shadowColor = 'transparent';        ctx.shadowBlur = 3;
-
-        
-
-      
 
         var startAngle = arc.startAngle;
         var endAngle = arc.EndAngle;
@@ -410,27 +414,7 @@ function EDRotatingMenu(options, canvas) {
 
 
 
-        //ctx.arc(MenuX + ((innerRadius + LineWidth / 2) * Math.cos(startAngle)), MenuY + ((innerRadius + LineWidth / 2) * Math.sin(startAngle)), 25, startAngle + (180 / 180 * Math.PI), startAngle, false);
-
-        ////Draw OUter Edge
-        //ctx.arc(MenuX, MenuY, outerRadius, startAngle, endAngle, false);
-
-        //if (Rounding) {
-        //    //draw roundedEdge Far end
-        //    ctx.arc(MenuX + ((outerRadius - LineWidth / 2) * Math.cos(endAngle)), MenuY + ((outerRadius - LineWidth / 2) * Math.sin(endAngle)), 25, endAngle, endAngle + (180 / 180 * Math.PI), false)
-        //}
-
-        ////draw inneredge
-        //ctx.arc(MenuX, MenuY, innerRadius, endAngle, startAngle, true);
-        //if (Rounding) {
-        //    //draw roundedEdge back to start
-        //    ctx.arc(MenuX + ((innerRadius + LineWidth / 2) * Math.cos(startAngle)), MenuY + ((innerRadius + LineWidth / 2) * Math.sin(startAngle)), 25, startAngle + (180 / 180 * Math.PI), startAngle, false);
-        //}
-
-        //If Needs Border around segments
-        //ctx.strokeStyle = "white";
-        //ctx.lineWidth = 2;
-        //ctx.stroke();
+       
 
         var grd = ctx.createRadialGradient(MenuX, MenuY, arc.radius * 0.5, MenuX, MenuY, arc.radius);
         AddColour(grd, arc.colours)
@@ -441,13 +425,9 @@ function EDRotatingMenu(options, canvas) {
         ctx.fill();
 
 
-
-
-        
-
-
-
     }
+
+  
 
     function ClearCanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
