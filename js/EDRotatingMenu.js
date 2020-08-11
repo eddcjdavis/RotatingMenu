@@ -107,8 +107,7 @@ function EDRotatingMenu(options, canvas) {
         clearInterval(Animation);
     }, TimeToRotate)
 
-    function RotateAnimation() {
-        console.log("here");
+    function RotateAnimation() {        
         ClearCanvas();
         for (var i = 0; i < elements.length; i++) {
 
@@ -379,6 +378,7 @@ function EDRotatingMenu(options, canvas) {
 
 
     function Draw(arc) {
+        ctx.shadowBlur = ShadowBlur;
         ctx.shadowColor = 'rgba(0,0,0,0.5)';
         ctx.shadowOffsetX = ShadowOffsetX;
         ctx.shadowOffsetY = ShadowOffsetY;

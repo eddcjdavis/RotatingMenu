@@ -24,16 +24,17 @@
                 InnerMenu: ["MENU 11", "MENU 12", "MENU 13", "MENU 14", "MENU 15"],
                 InnerMenuLinks: ["../MENU11.ASPX", "../MENU12.ASPX", "../MENU13.ASPX", "../MENU14.ASPX", "../MENU15.ASPX"],
             },
+            //Middle Logo
             Img: "../Images/Logo.png", //Image/Logo Location SRC,
             ImgWidth: 140,  
             ImgHeight: 140,
+
+            //Shadow Options
             ShadowColor: "rgba(0,0,0,0.5)",
-            ShadowBlur: 10,
+            ShadowBlur: 6,
             ShadowOffsetX: 3,
             ShadowOffsetY: 5,
    
-
-
             //Colours
             OuterColours: ["#ffffff", "blue", "#031a9c"],
             MiddleColours: ["#ffffff", "#1ba157", "#066631"],
@@ -41,8 +42,7 @@
 
             Hovercolours: ["#ffffff", "#6f7305", "#e5ed09"],
 
-            //fonts
-
+            //Fonts
             OuterFont : "bold 15pt calibri",
             MiddleFont : "15pt calibri",
             InnerFont: "15pt calibri",
@@ -50,7 +50,7 @@
             StartTextOffset: 3, //offset start of text in segments by degrees (use negative numbers to move backwards)
             EndTextOffset: 4,//offset end of text in segments by degrees (use negative numbers to move backwards)
 
-            //Animation //TODO ADD EXPLINATION
+            //Animation 
             Speed: 10,  //rotate every n milliseconds - higher numbers mean "jumpier" animation however may work better on slower systems
             angleChange: 0.75, //In Degrees - how far it rotates every refresh - higher numbers means quicker rotation
             RotateTime: 2500, //in miliseconds - set to 0 for no rotation
@@ -60,7 +60,7 @@
 
             var canvas = document.getElementById('myCanvas');
 
-            $(canvas).css("border", "red 1px solid");
+            //$(canvas).css("border", "red 1px solid");
 
             var RotatingMenu = new EDRotatingMenu(options, canvas);
 
