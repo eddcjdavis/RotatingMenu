@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -12,18 +12,20 @@
 
         var options = {
             Rounding: true,         //ToggleRounding of Corners of Segments
-            CornerRadius: 10,       //If Rounding - Should be no more than half of Line Width.
+            CornerRadius: 10,       //If Rounding - Should be no more than half of Line Width. //10 is best value
             LineWidth: 50,          // Width of Each segment            
             Radus: 255,             //Outer Radius of the Outer Cirlce
             Menus: {            //Menu Titles and Links
-                OuterMenu: ["MENU 1", "MENU 2", "MENU 3", "MENU 4", "MENU 5"],
+                OuterMenu: ["MENU OPT 1", "MENU OPT 2", "MENU OPT 3", "MENU OPT 4", "MENU OPT 5"],
                 OuterMenuLinks: ["../MENU1.ASPX", "../MENU2.ASPX", "../MENU3.ASPX", "../MENU4.ASPX", "../MENU5.ASPX"],
-                MiddleMenu: ["MENU 6", "MENU 7", "MENU 8", "MENU 9", "MENU 10"],
+                MiddleMenu: ["MENU OPT 6", "MENU OPT 7", "MENU OPT 8", "MENU OPT 9", "MENU OPT 10"],
                 MiddleMenuLinks: ["../MENU6.ASPX", "../MENU7.ASPX", "../MENU8.ASPX", "../MENU9.ASPX", "../MENU10.ASPX"],
                 InnerMenu: ["MENU 11", "MENU 12", "MENU 13", "MENU 14", "MENU 15"],
                 InnerMenuLinks: ["../MENU11.ASPX", "../MENU12.ASPX", "../MENU13.ASPX", "../MENU14.ASPX", "../MENU15.ASPX"],
             },
             Img: "../Images/Logo.png", //Image Location,
+            ImgWidth: 160,
+            ImgHeight: 160,
             ShadowColor: "rgba(0,0,0,0.5)",
             ShadowBlur: 3,
             ShadowOffsetX: 3,
@@ -36,11 +38,16 @@
 
             Hovercolours: ["#ffffff", "#6f7305", "#e5ed09"],
 
+            //fonts
+
+            OuterFont : "bold 15pt calibri",
+            MiddleFont : "15pt calibri",
+            InnerFont : "15pt calibri",
+
             //Animation //TODO ADD EXPLINATION
             Speed: 10,
             angleChange: 0.02,
-            TimeToRotate: 2500,
-
+            RotateTime: 2500,
 
         };
 
